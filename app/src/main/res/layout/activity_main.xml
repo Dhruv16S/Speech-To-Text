@@ -7,55 +7,59 @@
     android:background="@color/user_def_BG"
     tools:context=".MainActivity" >
 
+    <ImageView
+        android:id="@+id/microphone"
+        android:layout_width="141dp"
+        android:layout_height="120dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="65dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/clipart" />
+
     <TextView
-        android:id="@+id/textListening"
+        android:id="@+id/tapToTalk"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="188dp"
-        android:layout_marginTop="108dp"
+        android:layout_marginStart="176dp"
+        android:layout_marginTop="100dp"
         android:fontFamily="@font/convergence"
-        android:text="Listening"
-        android:textColor="@color/white"
+        android:text="Tap To Talk"
+        android:textColor="#FFFFFF"
         android:textSize="34sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textDot1"
+        android:id="@+id/listening"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="340dp"
-        android:layout_marginTop="106dp"
-        android:text="."
-        android:textColor="@color/white"
+        android:layout_marginStart="176dp"
+        android:layout_marginTop="100dp"
+        android:fontFamily="@font/convergence"
+        android:text="Listening"
+        android:textColor="#FFFFFF"
         android:textSize="34sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:visibility="gone"/>
+
     <TextView
-        android:id="@+id/textDot2"
+        android:id="@+id/speech"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="348dp"
-        android:layout_marginTop="106dp"
-        android:text="."
-        android:textColor="@color/white"
-        android:textSize="34sp"
+        android:layout_marginStart="37dp"
+        android:layout_marginTop="31dp"
+        android:width="325dp"
+        android:background="@color/user_def_innerFG"
+        android:fontFamily="@font/convergence"
+        android:text="         View Your Speech Here"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-    <TextView
-        android:id="@+id/textDot3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="356dp"
-        android:layout_marginTop="106dp"
-        android:text="."
-        android:textColor="@color/white"
-        android:textSize="34sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/microphone" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
