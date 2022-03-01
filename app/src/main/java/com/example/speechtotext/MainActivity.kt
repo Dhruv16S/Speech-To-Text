@@ -10,6 +10,7 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import java.lang.Exception
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
@@ -45,21 +46,25 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun startListening(){
-        if(!SpeechRecognizer.isRecognitionAvailable(this)){
-            Toast.makeText(this, "Speech Recognition is not possible", Toast.LENGTH_SHORT).show()
-        }else{
             val speech = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH)
             speech.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM)
             speech.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.ENGLISH)
             speech.putExtra(RecognizerIntent.EXTRA_PROMPT, "Say Something")
-            startActivityForResult(speech, RQ_SPEECH_REC)
-        }
+            try{
+                startActivityForResult(speech, RQ_SPEECH_REC)
+            }
+            catch (e : Exception){
+                Toast.makeText(this, e.message, Toast.LENGTH_SHORT).show()
+            }
     }
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
         if(requestCode == RQ_SPEECH_REC && resultCode == Activity.RESULT_OK){
-            userSpeech.text = data?.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS).toString()
+            val finalSpeech = data?.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS)?.get(0)
+            userSpeech.text = finalSpeech.toString()
+            tapToTalk.visibility = View.VISIBLE
+            listening.visibility = View.GONE
         }
 
     }
